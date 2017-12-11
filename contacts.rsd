@@ -1,0 +1,75 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- See Column Definitions to specify column behavior and use XPaths to extract column values from JSON. -->
+  <rsb:info title="Contacts" desc="Generated schema file." xmlns:other="http://www.rssbus.com/ns/rsbscript/2/other">
+    <!-- You can modify the name, type, and column size here.  The name must match the values in the rsb:script block below -->
+    <attr name="created_at"                xs:type="datetime" readonly="false" other:xPath="created_at"                 />
+    <attr name="favorited"                 xs:type="boolean"  readonly="false" other:xPath="favorited"                  />
+    <attr name="favorited_at"              xs:type="unknown"  readonly="false" other:xPath="favorited_at"               />
+    <attr name="id"                        xs:type="integer"  readonly="false" other:xPath="id"                         />
+    <attr name="lock_version"              xs:type="integer"  readonly="false" other:xPath="lock_version"               />
+    <attr name="memo"                      xs:type="unknown"  readonly="false" other:xPath="memo"                       />
+    <attr name="recipient_address1"        xs:type="unknown"  readonly="false" other:xPath="recipient_address1"         />
+    <attr name="recipient_address2"        xs:type="unknown"  readonly="false" other:xPath="recipient_address2"         />
+    <attr name="recipient_code"            xs:type="unknown"  readonly="false" other:xPath="recipient_code"             />
+    <attr name="recipient_fax_no"          xs:type="unknown"  readonly="false" other:xPath="recipient_fax_no"           />
+    <attr name="recipient_mail_address"    xs:type="unknown"  readonly="false" other:xPath="recipient_mail_address"     />
+    <attr name="recipient_mail_address_cc" xs:type="unknown"  readonly="false" other:xPath="recipient_mail_address_cc"  />
+    <attr name="recipient_name"            xs:type="string"   readonly="false" other:xPath="recipient_name"             />
+    <attr name="recipient_name1"           xs:type="string"   readonly="false" other:xPath="recipient_name1"            />
+    <attr name="recipient_name2"           xs:type="unknown"  readonly="false" other:xPath="recipient_name2"            />
+    <attr name="recipient_name3"           xs:type="unknown"  readonly="false" other:xPath="recipient_name3"            />
+    <attr name="recipient_name4"           xs:type="unknown"  readonly="false" other:xPath="recipient_name4"            />
+    <attr name="recipient_notes"           xs:type="string"   readonly="false" other:xPath="recipient_notes"            />
+    <attr name="recipient_ruby"            xs:type="unknown"  readonly="false" other:xPath="recipient_ruby"             />
+    <attr name="recipient_tel_no"          xs:type="unknown"  readonly="false" other:xPath="recipient_tel_no"           />
+    <attr name="recipient_title"           xs:type="string"   readonly="false" other:xPath="recipient_title"            />
+    <attr name="recipient_title2"          xs:type="string"   readonly="false" other:xPath="recipient_title2"           />
+    <attr name="recipient_zip_code"        xs:type="unknown"  readonly="false" other:xPath="recipient_zip_code"         />
+    <attr name="tax_option"                xs:type="string"   readonly="false" other:xPath="tax_option"                 />
+    <attr name="trashed"                   xs:type="boolean"  readonly="false" other:xPath="trashed"                    />
+    <attr name="trashed_at"                xs:type="unknown"  readonly="false" other:xPath="trashed_at"                 />
+    <attr name="updated_at"                xs:type="datetime" readonly="false" other:xPath="updated_at"                 />
+    <attr name="user_id"                   xs:type="integer"  readonly="false" other:xPath="user_id"                    />
+  </rsb:info>
+
+  <rsb:set attr="uri" value="https://app.misoca.jp/api/v3/contacts" />
+
+  <!-- Column XPaths are relative to a RepeatElement that splits the JSON into rows. -->
+  <rsb:set attr="RepeatElement" value="/" />
+
+  <!-- The GET method corresponds to SELECT. Within the script block, you can see the URI modified to append a query string parameter. The results of processing are pushed to the schema's output. See SELECT Execution for more information. -->
+  <rsb:script method="GET">
+    <rsb:call op="jsonproviderGet">
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+  <!-- To add support for INSERTS please see the INSERT Execution page within the help for further information and examples. -->
+  <rsb:script method="POST">
+    <rsb:set attr="method" value="POST"/>
+    <rsb:call op="jsonproviderGet">
+      <rsb:throw code="500" desc="Inserts are not currently supported."/>
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+  <!-- To add support for UPDATES please see the UPDATE Execution page within the help for further information and examples. -->
+  <rsb:script method="MERGE">
+    <rsb:set attr="method" value="PUT"/>
+    <rsb:call op="jsonproviderGet">
+      <rsb:throw code="500" desc="Updates are not currently supported."/>
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+  <!-- To add support for DELETES please see the DELETE Execution page within the help for further information and examples. -->
+  <rsb:script method="DELETE">
+    <rsb:set attr="method" value="DELETE"/>
+    <rsb:call op="jsonproviderGet">
+      <rsb:throw code="500" desc="Deletes are not currently supported."/>
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+</rsb:script>

@@ -1,0 +1,91 @@
+<rsb:script xmlns:rsb="http://www.rssbus.com/ns/rsbscript/2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- See Column Definitions to specify column behavior and use XPaths to extract column values from JSON. -->
+  <rsb:info title="Estimates" desc="Generated schema file." xmlns:other="http://www.rssbus.com/ns/rsbscript/2/other">
+    <!-- You can modify the name, type, and column size here.  The name must match the values in the rsb:script block below -->
+    <attr name="archived_at"                     xs:type="unknown"  readonly="false" other:xPath="archived_at"                      />
+    <attr name="body_notes"                      xs:type="unknown"  readonly="false" other:xPath="body/notes"                       />
+    <attr name="body_private_sender_memo"        xs:type="unknown"  readonly="false" other:xPath="body/private_sender_memo"         />
+    <attr name="body_recipient_address1"         xs:type="unknown"  readonly="false" other:xPath="body/recipient_address1"          />
+    <attr name="body_recipient_address2"         xs:type="unknown"  readonly="false" other:xPath="body/recipient_address2"          />
+    <attr name="body_recipient_name1"            xs:type="string"   readonly="false" other:xPath="body/recipient_name1"             />
+    <attr name="body_recipient_name2"            xs:type="unknown"  readonly="false" other:xPath="body/recipient_name2"             />
+    <attr name="body_recipient_name3"            xs:type="unknown"  readonly="false" other:xPath="body/recipient_name3"             />
+    <attr name="body_recipient_name4"            xs:type="unknown"  readonly="false" other:xPath="body/recipient_name4"             />
+    <attr name="body_recipient_title"            xs:type="string"   readonly="false" other:xPath="body/recipient_title"             />
+    <attr name="body_recipient_zip_code"         xs:type="unknown"  readonly="false" other:xPath="body/recipient_zip_code"          />
+    <attr name="body_sender_address1"            xs:type="unknown"  readonly="false" other:xPath="body/sender_address1"             />
+    <attr name="body_sender_address2"            xs:type="unknown"  readonly="false" other:xPath="body/sender_address2"             />
+    <attr name="body_sender_address3"            xs:type="unknown"  readonly="false" other:xPath="body/sender_address3"             />
+    <attr name="body_sender_email"               xs:type="unknown"  readonly="false" other:xPath="body/sender_email"                />
+    <attr name="body_sender_fax"                 xs:type="unknown"  readonly="false" other:xPath="body/sender_fax"                  />
+    <attr name="body_sender_name1"               xs:type="string"   readonly="false" other:xPath="body/sender_name1"                />
+    <attr name="body_sender_name2"               xs:type="unknown"  readonly="false" other:xPath="body/sender_name2"                />
+    <attr name="body_sender_name3"               xs:type="unknown"  readonly="false" other:xPath="body/sender_name3"                />
+    <attr name="body_sender_tel"                 xs:type="unknown"  readonly="false" other:xPath="body/sender_tel"                  />
+    <attr name="body_sender_zip_code"            xs:type="unknown"  readonly="false" other:xPath="body/sender_zip_code"             />
+    <attr name="body_tax"                        xs:type="double"   readonly="false" other:xPath="body/tax"                         />
+    <attr name="body_tax_option"                 xs:type="string"   readonly="false" other:xPath="body/tax_option"                  />
+    <attr name="body_tax_rate"                   xs:type="integer"  readonly="false" other:xPath="body/tax_rate"                    />
+    <attr name="body_tax_rounding_policy"        xs:type="string"   readonly="false" other:xPath="body/tax_rounding_policy"         />
+    <attr name="body_total_amount"               xs:type="double"   readonly="false" other:xPath="body/total_amount"                />
+    <attr name="body_total_amount_including_tax" xs:type="double"   readonly="false" other:xPath="body/total_amount_including_tax"  />
+    <attr name="contact_id"                      xs:type="integer"  readonly="false" other:xPath="contact_id"                       />
+    <attr name="created_at"                      xs:type="datetime" readonly="false" other:xPath="created_at"                       />
+    <attr name="estimate_number"                 xs:type="string"   readonly="false" other:xPath="estimate_number"                  />
+    <attr name="estimate_status"                 xs:type="integer"  readonly="false" other:xPath="estimate_status"                  />
+    <attr name="expire_date"                     xs:type="date"     readonly="false" other:xPath="expire_date"                      />
+    <attr name="id"                              xs:type="integer"  readonly="false" other:xPath="id"                               />
+    <attr name="issue_date"                      xs:type="date"     readonly="false" other:xPath="issue_date"                       />
+    <attr name="issued"                          xs:type="boolean"  readonly="false" other:xPath="issued"                           />
+    <attr name="lock_version"                    xs:type="integer"  readonly="false" other:xPath="lock_version"                     />
+    <attr name="payment_status"                  xs:type="integer"  readonly="false" other:xPath="payment_status"                   />
+    <attr name="recipient_name"                  xs:type="string"   readonly="false" other:xPath="recipient_name"                   />
+    <attr name="recipient_notes"                 xs:type="string"   readonly="false" other:xPath="recipient_notes"                  />
+    <attr name="recipient_title"                 xs:type="string"   readonly="false" other:xPath="recipient_title"                  />
+    <attr name="subject"                         xs:type="string"   readonly="false" other:xPath="subject"                          />
+    <attr name="trashed_at"                      xs:type="unknown"  readonly="false" other:xPath="trashed_at"                       />
+    <attr name="updated_at"                      xs:type="datetime" readonly="false" other:xPath="updated_at"                       />
+    <attr name="user_id"                         xs:type="integer"  readonly="false" other:xPath="user_id"                          />
+  </rsb:info>
+
+  <rsb:set attr="uri" value="https://app.misoca.jp/api/v3/estimates" />
+
+  <!-- Column XPaths are relative to a RepeatElement that splits the JSON into rows. -->
+  <rsb:set attr="RepeatElement" value="/" />
+
+  <!-- The GET method corresponds to SELECT. Within the script block, you can see the URI modified to append a query string parameter. The results of processing are pushed to the schema's output. See SELECT Execution for more information. -->
+  <rsb:script method="GET">
+    <rsb:call op="jsonproviderGet">
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+  <!-- To add support for INSERTS please see the INSERT Execution page within the help for further information and examples. -->
+  <rsb:script method="POST">
+    <rsb:set attr="method" value="POST"/>
+    <rsb:call op="jsonproviderGet">
+      <rsb:throw code="500" desc="Inserts are not currently supported."/>
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+  <!-- To add support for UPDATES please see the UPDATE Execution page within the help for further information and examples. -->
+  <rsb:script method="MERGE">
+    <rsb:set attr="method" value="PUT"/>
+    <rsb:call op="jsonproviderGet">
+      <rsb:throw code="500" desc="Updates are not currently supported."/>
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+  <!-- To add support for DELETES please see the DELETE Execution page within the help for further information and examples. -->
+  <rsb:script method="DELETE">
+    <rsb:set attr="method" value="DELETE"/>
+    <rsb:call op="jsonproviderGet">
+      <rsb:throw code="500" desc="Deletes are not currently supported."/>
+      <rsb:push/>
+    </rsb:call>
+  </rsb:script>
+
+</rsb:script>
